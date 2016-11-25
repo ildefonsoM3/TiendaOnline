@@ -29,4 +29,6 @@ if(!isset($_SESSION['contador'])){
         <div id="carrito" style="background:black;color:white">
             Carrito
         </div>
+        <a href="php/destruir.php"><button>Vaciar Carrito</button></a>
+        <a href="confirmar.php"><button>Confirmar Compra</button></a>
         

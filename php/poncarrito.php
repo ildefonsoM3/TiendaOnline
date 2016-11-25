@@ -23,7 +23,7 @@ for($i = 0;$i < $_SESSION['contador'];$i++){
     }
 }
 
-echo "<tr><td>Subtotal</td><td>" . /*Funcion que pone los numeros en formato de miles y cientos con centavos */number_format($suma, 2) . "</td></tr>";
+echo "<tr><td>Subtotal</td><td>$" . /*Funcion que pone los numeros en formato de miles y cientos con centavos */number_format($suma, 2) . "</td></tr>";
 echo "</table>";
 mysqli_close($conexion);
 
