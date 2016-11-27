@@ -4,7 +4,7 @@
     
 $conexion = mysqli_connect("localhost", "tienda", "tienda", "tiendaonline");
 mysqli_set_charset($conexion, "utf8");
-$peticion = "SELECT * FROM productos";
+$peticion = "SELECT * FROM productos WHERE existencias > 0";
 $resultado = mysqli_query($conexion, $peticion);
 
 /*Muestra los nombres y descripciones de todos los productos*/
