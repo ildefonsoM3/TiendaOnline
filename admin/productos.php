@@ -1,24 +1,29 @@
+<meta charset="UTF-8">
 <table border=1>
 <?php
     
 $conexion = mysqli_connect("localhost", "tienda", "tienda", "tiendaonline");
 mysqli_set_charset($conexion, "utf8");
-$peticion = 
-    "SELECT * FROM productos";
+$peticion = "SELECT * FROM productos";
 $resultado = mysqli_query($conexion, $peticion);
 
 while($fila = mysqli_fetch_array($resultado)){
     
-    echo '<tr ';
-        echo '>
-            <td>'.$fila['nombre'].'</td>
-            <td>'.$fila['precio'].'</td>
-            <td>'.$fila['peso'].'</td>
-            <td>'.$fila['ancho'].' x '.$fila['alto'].' x '.$fila['largo'].'</td>
-            <td>'.$fila['existencias'].'</td>
-            <td>'.$fila['activado'].'</td>
-            <td><a href="eliminarproducto.php?='.$fila['activado'].'"><button>Eliminar</button></a></td>
-        </tr>';
+    echo '<tr>';
+    echo '
+        <form action="actualizarproducto.php?id='.$fila['id'].'" method="POST">        
+            <td><input type="text" name="nombre" value="'.$fila['nombre'].'"></td>
+            <td><input type="text" name="precio" value="'.$fila['precio'].'"></td>
+            <td><input type="text" name="peso" value="'.$fila['peso'].'"></td>
+            <td><input type="text" name="ancho" value="'.$fila['ancho'].'"> x 
+                <input type="text" name="alto" value="'.$fila['alto'].'"> x 
+                <input type="text" name="largo" value="'.$fila['largo'].'"></td>
+            <td><input type="text" name="existencias" value="'.$fila['existencias'].'"></td>
+            <td><input type="text" name="activado" value="'.$fila['activado'].'"></td>
+            <td><input type="submit" value="Actualizar"></td>
+            <td><a href="eliminarproducto.php?id='.$fila['id'].'"><button>Eliminar</button></a></td>
+        </form>
+    </tr>';
 }
 mysqli_close($conexion);
 ?>
@@ -32,6 +37,7 @@ mysqli_close($conexion);
         <td><input type="text" name="existencias"> </td>
         <td><input type="text" name="activado"> </td>
         <td><input type="submit"> </td>
+        <td></td>
     </form>
 </tr>
 </table>
