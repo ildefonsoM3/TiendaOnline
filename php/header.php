@@ -21,14 +21,14 @@ if(!isset($_SESSION['contador'])){
     <div id="contenedor">
         <header>
             <a href="index.php"><h1>Tienda</h1></a>
-            <h2>Subtítulo de la Tienda</h2>
-            
+            <h2>Productos de Artesanías</h2>
         </header>
         
         <section>
-        <div id="carrito" style="background:black;color:white">
-            Carrito
+        <div id="contieneCarrito">
+            <div id="carrito" style="background:rgb(200,200,200);color:black">
+                Carrito
+            </div>
+            <a href="php/destruir.php"><button>Vaciar Carrito</button></a>
+            <a href="confirmar.php"><button>Confirmar Compra</button></a>
         </div>
-        <a href="php/destruir.php"><button>Vaciar Carrito</button></a>
-        <a href="confirmar.php"><button>Confirmar Compra</button></a>
-        
