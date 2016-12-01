@@ -21,8 +21,8 @@ while($fila = mysqli_fetch_array($resultado)){
             <td><input type="text" name="existencias" value="'.$fila['existencias'].'"></td>
             <td><input type="text" name="activado" value="'.$fila['activado'].'"></td>
             <td><input type="submit" value="Actualizar"></td>
-            <td><a href="eliminarproducto.php?id='.$fila['id'].'"><button>Eliminar</button></a></td>
         </form>
+            <td><a href="eliminarproducto.php?id='.$fila['id'].'"><button>Eliminar</button></a></td>
     </tr>';
 }
 mysqli_close($conexion);
