@@ -17,6 +17,10 @@ echo "<table>";
         $peticion = "SELECT * FROM productos WHERE id =" . $_SESSION['producto'][$i] . "";
         $resultado = mysqli_query($conexion, $peticion);
 
+<<<<<<< HEAD
+=======
+/*Muestra la suma de todos los productos*/
+>>>>>>> admin
         while($fila = mysqli_fetch_array($resultado)){
             echo "<tr><td>" . $fila['nombre'] . "</td><td>" . $fila['precio'] . "</td></tr>";
             $suma += $fila['precio'];
