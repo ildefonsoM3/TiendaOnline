@@ -1,8 +1,9 @@
 <?php include "php/header.php" ?>
+<?php include "php/config.php" ?>
 
 <?php
     
-$conexion = mysqli_connect("localhost", "tienda", "tienda", "tiendaonline");
+$conexion = mysqli_connect($servidor, $usuario, $contrasena, $baseDeDatos);
 mysqli_set_charset($conexion, "utf8");
 $peticion = "SELECT * FROM productos WHERE existencias > 0";
 $resultado = mysqli_query($conexion, $peticion);
@@ -20,8 +21,10 @@ while($fila = mysqli_fetch_array($resultado)){
         echo "<a href='producto.php?id=" . $fila['id'] . "'><h3>" . $fila['nombre'] . "</h3></a>";
         echo "<p>" . $fila['descripcion'] . "</p>";
         echo "<p>Precio : $" . $fila['precio'] . "</p>";
-
+    
+        echo "<input type='number' value='1' max='5' min='1' id='num".$fila['id']."'>";
         echo "<br>";
+    
         echo "<a href='producto.php?id=" . $fila['id'] . "'><button>Más información</button></a>";
         echo "<button value='".$fila['id']."' class='botoncompra'>Comprar ahora</button>";
     echo "</article>";
@@ -29,4 +32,9 @@ while($fila = mysqli_fetch_array($resultado)){
 mysqli_close($conexion);
 
 ?>
+<<<<<<< HEAD
+=======
+   
+    
+>>>>>>> admin
 <?php include "php/footer.php" ?>

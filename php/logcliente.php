@@ -1,11 +1,12 @@
-<?php
-    
-include "header.php";
+<?php include "config.php" ?>
 
+<?php
+include "header.php";
+    
 $contador = 0;
-$conexion = mysqli_connect("localhost", "tienda", "tienda", "tiendaonline");
+$conexion = mysqli_connect($servidor, $usuario, $contrasena, $baseDeDatos);
 mysqli_set_charset($conexion, "utf8");
-$peticion = "SELECT * FROM clientes WHERE usuario = '".$_POST['usuario']."' AND contrasena = '".$_POST['contrasena']."' ";
+$peticion = "SELECT * FROM clientes WHERE usuario = '".$_REQUEST['usuario']."' AND contrasena = '".$_REQUEST['contrasena']." ' ";
 $resultado = mysqli_query($conexion, $peticion);
 
 while($fila = mysqli_fetch_array($resultado)){
@@ -14,7 +15,7 @@ while($fila = mysqli_fetch_array($resultado)){
 }
 
 if($contador > 0){
-    $peticion = "INSERT INTO pedidos VALUES (NULL, ". $_SESSION['usuario'] . ", '" . date('U') . "', '0')";
+    $peticion = "INSERT INTO pedidos VALUES (NULL, ". $_SESSION['usuario'] . ", ' " . date('U') . " ', '0')";
     $resultado = mysqli_query($conexion, $peticion);
     
     $peticion = "SELECT * FROM pedidos WHERE idcliente = '" . $_SESSION['usuario'] . "' ORDER BY fecha DESC LIMIT 1";
@@ -27,7 +28,7 @@ if($contador > 0){
     
     for($i = 0;$i < $_SESSION['contador'];$i++){
         $peticion = 
-            "INSERT INTO lineaspedido VALUES (NULL, '".$_SESSION['idpedido']."', '".$_SESSION['producto'][$i]."', '1')";
+            "INSERT INTO lineaspedido VALUES (NULL, '".$_SESSION['idpedido']."', '".$_SESSION['producto'][$i]." ',  '".$_SESSION['cantidad'][$i]." ' )";
         $resultado = mysqli_query($conexion, $peticion);
         
 /*Estas líneas anidadas en el for son para restar existencias a los productos*/

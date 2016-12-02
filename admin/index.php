@@ -1,3 +1,3 @@
-<a href="pedidos.php">Gestionar pedidos</a>
-<a href="clientes.php">Gestionar clientes</a>
-<a href="productos.php">Gestionar productos</a>
+<?php include "cabecera.php"?>
+
+<?php include "piedepagina.php"?>
