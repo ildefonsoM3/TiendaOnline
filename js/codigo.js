@@ -1,9 +1,11 @@
 $(document).ready(inicio)
 function inicio(){
-    $(".botoncompra").click(anade);
+    $(".botoncompra").click(anade)
     $("#carrito").load("php/poncarrito.php");
 }
 
 function anade(){
-    $("#carrito").load("php/poncarrito.php?p=" + $(this).val());
+    var idnumero = $(this).val();
+    var cantidad = $("#num"+idnumero).val();
+    $("#carrito").load("php/poncarrito.php?p=" + $(this).val()+"&cant="+cantidad);
 }

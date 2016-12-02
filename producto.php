@@ -1,8 +1,9 @@
 <?php include "php/header.php" ?>
+<?php include "php/config.php" ?>
 
 <?php
     
-$conexion = mysqli_connect("localhost", "tienda", "tienda", "tiendaonline");
+$conexion = mysqli_connect($servidor, $usuario, $contrasena, $baseDeDatos);
 mysqli_set_charset($conexion, "utf8");
 $peticion = "SELECT * FROM productos WHERE id=" . $_GET['id'] . " LIMIT 1";
 $resultado = mysqli_query($conexion, $peticion);

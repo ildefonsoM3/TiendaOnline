@@ -1,15 +1,22 @@
-<meta charset="UTF-8">
-<table border=1>
+<?php include "cabecera.php"?>
+<?php include "../php/config.php" ?>
+
+<table>
 <?php
-    
-$conexion = mysqli_connect("localhost", "tienda", "tienda", "tiendaonline");
+$conexion = mysqli_connect($servidor, $usuario, $contrasena, $baseDeDatos);
 mysqli_set_charset($conexion, "utf8");
 $peticion = "SELECT * FROM clientes";
 $resultado = mysqli_query($conexion, $peticion);
 
+$contador = 0;
 while($fila = mysqli_fetch_array($resultado)){
+
+    echo '<tr';
+/*Con este if se asigna la sombra a una fila si y la siguiente no*/
+        if($contador)
+            echo " class='sombredo' ";
+    echo '>';
     
-    echo '<tr>';
     echo '
         <form action="actualizarcliente.php?id='.$fila['id'].'" method="POST">        
             <td><input type="text" name="nombre" value="'.$fila['nombre'].'">
@@ -25,10 +32,16 @@ while($fila = mysqli_fetch_array($resultado)){
             <td><input type="text" name="estado"            value="'.$fila['estado'].'"></td>
             <td><input type="text" name="ciudad"            value="'.$fila['ciudad'].'"></td>
             
-            <td><input type="submit"                                 value="Actualizar"></td>
+            <td><input type="submit" class="boton"           value="Actualizar"></td>
         </form>
             <td><a href="eliminarcliente.php?id='.$fila['id'].'"><button>Eliminar</button></a></td>
     </tr>';
+
+/*If para agregar un contador y así sombrear una fila si y otra no en la tabla*/
+    if(!$contador)
+        $contador++;
+        $contador--;
+    
 }
 mysqli_close($conexion);
 ?>
@@ -47,8 +60,9 @@ mysqli_close($conexion);
         <td><input type="text" name="pais"      ></td>
         <td><input type="text" name="estado"    ></td>
         <td><input type="text" name="ciudad"    ></td>
-        <td><input type="submit"> </td>
+        <td><input type="submit" class="boton"> </td>
         <td></td>
     </form>
 </tr>
 </table>
+<?php include "piedepagina.php"?>

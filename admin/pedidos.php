@@ -1,7 +1,10 @@
-<table border=1>
+<?php include "cabecera.php"?>
+<?php include "../php/config.php" ?>
+
+<table>
 <?php
     
-$conexion = mysqli_connect("localhost", "tienda", "tienda", "tiendaonline");
+$conexion = mysqli_connect($servidor, $usuario, $contrasena, $baseDeDatos);
 mysqli_set_charset($conexion, "utf8");
 $peticion = 
     "SELECT pedidos.id AS idpedido, fecha, estado, nombre, apellidos FROM pedidos LEFT JOIN clientes ON pedidos.idcliente = clientes.id ORDER BY estado,fecha ASC";
@@ -41,4 +44,4 @@ mysqli_close($conexion);
 
 ?>
 </table>
-
+<?php include "piedepagina.php"?>

@@ -1,8 +1,10 @@
-<meta charset="UTF-8">
-<table border=1>
+<?php include "cabecera.php"?>
+<?php include "../php/config.php" ?>
+
+<table>
 <?php
     
-$conexion = mysqli_connect("localhost", "tienda", "tienda", "tiendaonline");
+$conexion = mysqli_connect($servidor, $usuario, $contrasena, $baseDeDatos);
 mysqli_set_charset($conexion, "utf8");
 $peticion = "SELECT * FROM productos";
 $resultado = mysqli_query($conexion, $peticion);
@@ -29,15 +31,16 @@ mysqli_close($conexion);
 ?>
 
 <tr>
-    <form action="nuevoproducto.php" method="POST">
+    <form action="nuevoproducto.php" method="POST" enctype="multipart/form-data">
         <td><input type="text" name="nombre"> </td>
         <td><input type="text" name="precio"> </td>
         <td><input type="text" name="peso"> </td>
         <td><input type="text" name="largo">x<input type="text" name="ancho">x<input type="text" name="alto"> </td>
         <td><input type="text" name="existencias"> </td>
         <td><input type="text" name="activado"> </td>
-        <td><input type="submit"> </td>
-        <td></td>
+        <td><input type="file" name="imagen"></td>
+        <td><input type="submit"></td>
     </form>
 </tr>
 </table>
+<?php include "piedepagina.php"?>
