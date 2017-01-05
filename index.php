@@ -32,9 +32,5 @@ while($fila = mysqli_fetch_array($resultado)){
 mysqli_close($conexion);
 
 ?>
-<<<<<<< HEAD
-=======
-   
-    
->>>>>>> admin
+
 <?php include "php/footer.php" ?>

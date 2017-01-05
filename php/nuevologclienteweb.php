@@ -1,5 +1,4 @@
-<?php include "config.php" ?>
-<?php
+<?php include "config.php" 
     
 $contador = 0;
 $conexion = mysqli_connect($servidor, $usuario, $contrasena, $baseDeDatos);
@@ -43,6 +42,17 @@ if($contador == 0){
         </script>
     ';
 }
+
+    if(isset($pago)){
+        $pago = $_POST['pago'];
+        if($pago == 'tarjeta'){
+            header("Location:pagoTarjeta.php");
+        }elseif($pago == 'transferencia'){
+            header("Location: pedido.php");
+        }else{
+            echo "listo";
+        }
+    }
 ?>
 
 
